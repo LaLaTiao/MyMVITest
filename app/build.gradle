@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+ext {
+    supportLibraryVersion = "26.1.0"
+    mosbyVersion = "3.1.0"
+    rxBindingVersion = "2.0.0"
+    rxJavaVersion = "2.1.6"
+    rxAndroidVersion = "2.0.1"
+    timberVersion = "4.6.0"
+    okhttpVersion = "3.9.1"
+    okioVersion = "1.13.0"
+}
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "mvitest.kusofan.com.mvitest"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+//    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //MVI需要的依赖
+    // Mosby
+    compile "com.hannesdorfmann.mosby3:mvi:$mosbyVersion"
+    // RxJava and RxAndroid
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //OKHTTP
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile "com.squareup.okio:okio:$okioVersion"
+}
